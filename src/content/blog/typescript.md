@@ -1,16 +1,208 @@
 ---
 title: 'TypeScript'
-description: 'Lorem ipsum dolor sit amet'
+description: 'Guide to using TypeScript'
 pubDate: 'Jul 15 2022'
 heroImage: '/typescript.jpg'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+TypeScript is a strongly typed superset of JavaScript that adds static typing. It helps catch errors early, provides better developer tooling, and improves code readability.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+## Why Use TypeScript?
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+- Catches errors at compile time
+- Enables better autocompletion and refactoring
+- Makes large codebases easier to maintain
+- Encourages documenting with types
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+---
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+## Getting Started with TypeScript
+
+### Installation
+
+To install TypeScript globally:
+
+```bash
+npm install -g typescript
+```
+
+To add it to your project:
+
+```bash
+npm install --save-dev typescript
+```
+
+---
+
+### tsconfig.json
+
+Initialize TypeScript configuration:
+
+```bash
+npx tsc --init
+```
+
+A basic `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src"]
+}
+```
+
+---
+
+## Basic TypeScript Syntax
+
+### Variable Types
+
+```ts
+let count: number = 5;
+let name: string = "Hunter";
+let isActive: boolean = true;
+```
+
+### Arrays and Tuples
+
+```ts
+let fruits: string[] = ["apple", "banana"];
+let tuple: [string, number] = ["age", 29];
+```
+
+### Enums
+
+```ts
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right
+}
+```
+
+### Functions with Types
+
+```ts
+function greet(name: string): string {
+  return `Hello, ${name}`;
+}
+```
+
+### Interfaces
+
+```ts
+interface User {
+  id: number;
+  username: string;
+}
+
+const user: User = {
+  id: 1,
+  username: "max"
+};
+```
+
+---
+
+## TypeScript in React
+
+### Setup in React Project
+
+To create a new React + TypeScript project:
+
+```bash
+npx create-react-app my-app --template typescript
+```
+
+Or add TypeScript to an existing React project:
+
+```bash
+npm install --save typescript @types/react @types/react-dom
+```
+
+---
+
+### Functional Component with Props
+
+```tsx
+type GreetingProps = {
+  name: string;
+};
+
+const Greeting: React.FC<GreetingProps> = ({ name }) => {
+  return <h1>Hello, {name}!</h1>;
+};
+```
+
+---
+
+### useState with Type
+
+```tsx
+const [count, setCount] = useState<number>(0);
+```
+
+---
+
+### useRef with Type
+
+```tsx
+const inputRef = useRef<HTMLInputElement>(null);
+```
+
+---
+
+### Event Handling
+
+```tsx
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(e.target.value);
+};
+```
+
+---
+
+### useEffect with Cleanup
+
+```tsx
+useEffect(() => {
+  const timer = setTimeout(() => console.log("Hi!"), 1000);
+  return () => clearTimeout(timer);
+}, []);
+```
+
+---
+
+## React Component Types Summary
+
+| Usage             | Syntax Example                                      |
+| ---------------- | -------------------------------------------------- |
+| Functional Props  | `type Props = { name: string }`                    |
+| FC Component      | `const Comp: React.FC<Props>`                      |
+| State Hook        | `useState<number>(0)`                              |
+| Ref Hook          | `useRef<HTMLInputElement>(null)`                  |
+| Event             | `onChange={(e: React.ChangeEvent<HTMLInputElement>) => {}}` |
+
+---
+
+## Utility Types
+
+```ts
+type PartialUser = Partial<User>;       // Makes all props optional
+type ReadonlyUser = Readonly<User>;     // Makes all props readonly
+type PickUser = Pick<User, "id">;       // Picks just the id
+type OmitUser = Omit<User, "id">;       // Omits the id
+```
+
+---
+
+## Conclusion
+
+TypeScript improves developer experience in both JavaScript and React. By typing your components and variables, you gain confidence in your code and reduce runtime errors. Over time, it leads to cleaner and more scalable applications.
