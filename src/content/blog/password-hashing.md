@@ -1,7 +1,7 @@
 ---
 title: 'Password Hashing'
 description: 'Best practices for securely storing passwords'
-pubDate: 'Jun 01 2024'
+pubDate: 'May 10 2025'
 heroImage: '/password-hashing.png'
 ---
 
